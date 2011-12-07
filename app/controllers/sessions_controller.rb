@@ -4,13 +4,20 @@ class SessionsController < ApplicationController
     
     user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])|| User.create_with_omniauth(auth)
     
-    unless user 
+    unless user
+      @logged_in = false 
       session[:user_id] = nil
-      redirect_to root_url, :notice => "Authentication ERROR"
+      #redirect_to root_url, :notice => "Authentication ERROR"
     else
+      @logged_in = true
+      @user_email = user.email 
       session[:user_id] = user.id
-      redirect_to root_url, :notice => "Signed in!"
+      #redirect_to root_url, :notice => "Signed in!"
     end
+  end
+  
+  def main_redirect
+    redirect_to "/auth/google"
   end
 
   def destroy
