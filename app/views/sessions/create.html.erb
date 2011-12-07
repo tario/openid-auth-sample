@@ -1,7 +1,12 @@
 <html>
 	<% if @logged_in %>
-		Congratulations! you are signed in on the site as <%= @user_email %>
+		Congratulations! you are signed in this site as <%= @user_email %>
 	<% else %>
 		Loggin failed :(
 	<% end %>
+	
+	<br/>
+	<br/>
+	You can get the code of this app at:
+	<a href="https://github.com/tario/openid-auth-sample">https://github.com/tario/openid-auth-sample</a>
 </html>
