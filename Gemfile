@@ -36,6 +36,8 @@ group :test do
 end
 
 gem 'omniauth'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google_oauth2'
 gem 'omniauth-openid'
 gem 'ruby-openid'
+gem 'pry'
+gem 'mongrel'
