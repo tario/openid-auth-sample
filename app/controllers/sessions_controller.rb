@@ -2,17 +2,25 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
     
-    require "pry"
-    binding.pry
+    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])|| User.create_with_omniauth(auth)
     
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
-    redirect_to root_url, :notice => "Signed in!"
+    unless user 
+      session[:user_id] = nil
+      redirect_to root_url, :notice => "Authentication ERROR"
+    else
+      session[:user_id] = user.id
+      redirect_to root_url, :notice => "Signed in!"
+    end
   end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_url, :notice => "Signed out!"
+  end
+  
+private
+  def root_url
+    "/"
   end
 end
 
