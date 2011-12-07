@@ -1,6 +1,7 @@
 print "*"*60,"\n"
 
 require "openid/store/filesystem"
+require "omniauth_patch" # located at lib dir
 OmniAuth.config.full_host = "http://localhost:3000"
 
 Rails.application.config.middleware.use OmniAuth::Builder do
