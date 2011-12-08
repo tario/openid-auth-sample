@@ -36,11 +36,8 @@ group :test do
 end
 
 gem 'omniauth'
-gem 'omniauth-google_oauth2'
 gem 'omniauth-openid'
-gem 'ruby-openid'
 gem 'pg'
 gem 'memcached-northscale'
-gem 'memcache'
 #gem 'mongrel'
 
