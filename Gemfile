@@ -41,5 +41,6 @@ gem 'omniauth-openid'
 gem 'ruby-openid'
 gem 'pg'
 gem 'memcached-northscale'
+gem 'memcache'
 #gem 'mongrel'
 
